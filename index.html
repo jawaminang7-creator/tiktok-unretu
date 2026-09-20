@@ -13,275 +13,1226 @@
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #080808;
-      color: white;
       min-height: 100vh;
+      background: #050505;
+      color: #fff;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
     }
 
     .container {
-      max-width: 600px;
+      width: 100%;
+      max-width: 650px;
       margin: auto;
-      padding: 30px 18px;
+      padding: 25px 16px 50px;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 8px;
+      margin: 10px 0 8px;
+      font-size: 28px;
     }
 
     .subtitle {
       text-align: center;
-      color: #aaa;
-      margin-bottom: 30px;
+      color: #999;
+      font-size: 14px;
+      margin-bottom: 25px;
+      line-height: 1.5;
     }
 
     .card {
-      background: #151515;
+      background: #111;
       border: 1px solid #292929;
-      border-radius: 16px;
+      border-radius: 18px;
       padding: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
-    .upload {
-      border: 2px dashed #555;
-      border-radius: 14px;
-      padding: 35px 20px;
+    .upload-box {
+      display: block;
+      border: 2px dashed #444;
+      border-radius: 15px;
+      padding: 35px 15px;
       text-align: center;
       cursor: pointer;
+      transition: 0.2s;
     }
 
-    .upload:hover {
-      border-color: white;
+    .upload-box:hover {
+      border-color: #fff;
+      background: #171717;
+    }
+
+    .upload-icon {
+      font-size: 45px;
+      margin-bottom: 10px;
+    }
+
+    .upload-title {
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .upload-subtitle {
+      margin-top: 8px;
+      color: #777;
+      font-size: 13px;
     }
 
     input[type="file"] {
       display: none;
     }
 
+    video {
+      width: 100%;
+      max-height: 600px;
+      margin-top: 18px;
+      border-radius: 14px;
+      background: #000;
+      display: none;
+    }
+
+    .file-info {
+      display: none;
+      margin-top: 15px;
+      padding: 14px;
+      border-radius: 12px;
+      background: #191919;
+      color: #bbb;
+      font-size: 13px;
+      line-height: 1.8;
+      word-break: break-word;
+    }
+
+    .settings-title {
+      font-size: 17px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .setting {
+      margin-bottom: 15px;
+    }
+
+    .setting label {
+      display: block;
+      margin-bottom: 7px;
+      color: #bbb;
+      font-size: 13px;
+    }
+
+    select {
+      width: 100%;
+      background: #1c1c1c;
+      color: white;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 13px;
+      font-size: 15px;
+    }
+
     button {
       width: 100%;
-      padding: 15px;
-      border: none;
+      border: 0;
       border-radius: 12px;
-      background: white;
-      color: black;
+      padding: 15px;
+      margin-top: 10px;
+      background: #fff;
+      color: #000;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      margin-top: 15px;
+    }
+
+    button:hover {
+      opacity: 0.9;
     }
 
     button:disabled {
-      opacity: 0.4;
+      opacity: 0.35;
       cursor: not-allowed;
     }
 
-    video {
-      width: 100%;
-      max-height: 500px;
+    .load-button {
+      background: #25f4ee;
+    }
+
+    .encode-button {
+      background: #fff;
+    }
+
+    .download-button {
+      display: none;
+      background: #25f4ee;
+      color: #000;
+      text-decoration: none;
+      text-align: center;
+      padding: 15px;
       border-radius: 12px;
-      margin-top: 20px;
-      background: black;
+      margin-top: 12px;
+      font-weight: bold;
     }
 
-    .info {
-      margin-top: 15px;
-      color: #aaa;
-      font-size: 14px;
-      line-height: 1.7;
+    .progress-container {
+      display: none;
+      margin-top: 20px;
     }
 
-    .progress {
-      margin-top: 20px;
-      height: 8px;
-      background: #333;
-      border-radius: 10px;
+    .progress-background {
+      width: 100%;
+      height: 10px;
+      background: #292929;
+      border-radius: 20px;
       overflow: hidden;
     }
 
     .progress-bar {
       height: 100%;
       width: 0%;
-      background: white;
+      background: #25f4ee;
       transition: width 0.2s;
+    }
+
+    .progress-text {
+      text-align: center;
+      color: #aaa;
+      font-size: 13px;
+      margin-top: 8px;
     }
 
     .status {
       text-align: center;
-      margin-top: 12px;
       color: #aaa;
+      font-size: 14px;
+      margin-top: 15px;
+      line-height: 1.5;
     }
 
-    .download {
-      display: block;
-      text-align: center;
-      background: #25f4ee;
-      color: black;
-      padding: 15px;
-      border-radius: 12px;
-      margin-top: 15px;
-      text-decoration: none;
-      font-weight: bold;
+    .tips {
+      color: #999;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .tips strong {
+      color: #ddd;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .error {
+      color: #ff6b6b;
+    }
+
+    .success {
+      color: #25f4ee;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <h1>🎬 TikTok Video Encoder</h1>
+  <h1>🎬 TikTok Encoder</h1>
 
-    <div class="subtitle">
-      Optimalkan video sebelum upload ke TikTok
+  <div class="subtitle">
+    Encode video sebelum upload ke TikTok
+    <br>
+    Proses dilakukan langsung di browser.
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- FILE UPLOAD -->
+  <!-- ========================= -->
+
+  <div class="card">
+
+    <label class="upload-box" for="videoInput">
+
+      <div class="upload-icon">
+        📁
+      </div>
+
+      <div class="upload-title">
+        Pilih Video dari Galeri
+      </div>
+
+      <div class="upload-subtitle">
+        MP4 • MOV • WebM
+      </div>
+
+    </label>
+
+    <input
+      id="videoInput"
+      type="file"
+      accept="video/*"
+    >
+
+    <video
+      id="preview"
+      controls
+      playsinline
+    ></video>
+
+    <div
+      id="fileInfo"
+      class="file-info"
+    ></div>
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- SETTINGS -->
+  <!-- ========================= -->
+
+  <div
+    id="settingsCard"
+    class="card hidden"
+  >
+
+    <div class="settings-title">
+      ⚙️ Pengaturan Encoding
     </div>
 
-    <div class="card">
 
-      <label class="upload" for="videoInput">
-        <div style="font-size:40px;">📁</div>
-        <br>
-        Pilih video dari galeri
-        <br>
-        <small style="color:#888;">
-          MP4 / MOV / WebM
-        </small>
+    <div class="setting">
+
+      <label for="resolution">
+        Resolusi
       </label>
 
-      <input
-        type="file"
-        id="videoInput"
-        accept="video/*"
-      >
+      <select id="resolution">
 
-      <video
-        id="preview"
-        controls
-        style="display:none;"
-      ></video>
+        <option value="original">
+          Pertahankan resolusi asli
+        </option>
 
-      <div
-        id="info"
-        class="info"
-        style="display:none;"
-      ></div>
+        <option value="1080">
+          1080 × 1920 (Vertical)
+        </option>
 
-      <button
-        id="encodeButton"
-        disabled
-      >
-        Encode Video
-      </button>
+        <option value="720">
+          720 × 1280 (Vertical)
+        </option>
 
-      <div
-        class="progress"
-        id="progressContainer"
-        style="display:none;"
-      >
-        <div
-          class="progress-bar"
-          id="progressBar"
-        ></div>
-      </div>
-
-      <div
-        class="status"
-        id="status"
-      ></div>
-
-      <div id="downloadContainer"></div>
+      </select>
 
     </div>
 
-    <div class="card">
 
-      <h3>⚙️ Target Encoding</h3>
+    <div class="setting">
 
-      <div class="info">
-        Format: MP4<br>
-        Video Codec: H.264<br>
-        Audio: AAC<br>
-        Target: Vertical 9:16<br>
-        FPS: 30 / 60
+      <label for="fps">
+        Frame Rate
+      </label>
+
+      <select id="fps">
+
+        <option value="original">
+          Pertahankan FPS asli
+        </option>
+
+        <option value="30">
+          30 FPS
+        </option>
+
+        <option value="60">
+          60 FPS
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <div class="setting">
+
+      <label for="quality">
+        Kualitas Video
+      </label>
+
+      <select id="quality">
+
+        <option value="18">
+          Sangat tinggi
+        </option>
+
+        <option value="20" selected>
+          Tinggi / Recommended
+        </option>
+
+        <option value="23">
+          Seimbang
+        </option>
+
+        <option value="26">
+          Ukuran file lebih kecil
+        </option>
+
+      </select>
+
+    </div>
+
+
+    <button
+      id="loadButton"
+      class="load-button"
+    >
+      ⚡ Load Encoder
+    </button>
+
+
+    <button
+      id="encodeButton"
+      class="encode-button"
+      disabled
+    >
+      🎬 Encode Video
+    </button>
+
+
+    <!-- PROGRESS -->
+
+    <div
+      id="progressContainer"
+      class="progress-container"
+    >
+
+      <div class="progress-background">
+
+        <div
+          id="progressBar"
+          class="progress-bar"
+        ></div>
+
       </div>
+
+      <div
+        id="progressText"
+        class="progress-text"
+      >
+        0%
+      </div>
+
+    </div>
+
+
+    <div
+      id="status"
+      class="status"
+    ></div>
+
+
+    <a
+      id="downloadButton"
+      class="download-button"
+      download="tiktok-encoded.mp4"
+    >
+      ⬇️ Download Video
+    </a>
+
+  </div>
+
+
+  <!-- ========================= -->
+  <!-- INFO -->
+  <!-- ========================= -->
+
+  <div class="card">
+
+    <div class="settings-title">
+      📱 Target
+    </div>
+
+    <div class="tips">
+
+      <strong>Container:</strong> MP4<br>
+
+      <strong>Video:</strong> H.264<br>
+
+      <strong>Audio:</strong> AAC<br>
+
+      <strong>Orientasi:</strong> Vertical 9:16<br>
+
+      <strong>Processing:</strong> Browser / perangkat kamu
 
     </div>
 
   </div>
 
-<script>
 
-const videoInput = document.getElementById("videoInput");
-const preview = document.getElementById("preview");
-const info = document.getElementById("info");
-const encodeButton = document.getElementById("encodeButton");
-const status = document.getElementById("status");
+  <div class="card">
 
-let selectedFile = null;
+    <div class="settings-title">
+      💡 Catatan
+    </div>
 
-videoInput.addEventListener("change", function() {
+    <div class="tips">
 
-  selectedFile = this.files[0];
+      Website ini membuat file video baru dengan encoding
+      H.264 + AAC sebelum kamu upload ke TikTok.
 
-  if (!selectedFile) {
-    return;
+      <br><br>
+
+      Encoding membutuhkan CPU dan RAM perangkat.
+      Video panjang atau resolusi tinggi dapat membutuhkan
+      waktu cukup lama.
+
+      <br><br>
+
+      File video diproses di browser dan tidak perlu
+      dikirim ke server kita.
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- FFMPEG -->
+<!-- ====================================================== -->
+
+<script type="module">
+
+  import {
+    FFmpeg
+  } from "https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.12.10/dist/esm/index.js";
+
+  import {
+    fetchFile,
+    toBlobURL
+  } from "https://cdn.jsdelivr.net/npm/@ffmpeg/util@0.12.1/dist/esm/index.js";
+
+
+  // ======================================================
+  // ELEMENTS
+  // ======================================================
+
+  const videoInput =
+    document.getElementById("videoInput");
+
+  const preview =
+    document.getElementById("preview");
+
+  const fileInfo =
+    document.getElementById("fileInfo");
+
+  const settingsCard =
+    document.getElementById("settingsCard");
+
+  const loadButton =
+    document.getElementById("loadButton");
+
+  const encodeButton =
+    document.getElementById("encodeButton");
+
+  const progressContainer =
+    document.getElementById("progressContainer");
+
+  const progressBar =
+    document.getElementById("progressBar");
+
+  const progressText =
+    document.getElementById("progressText");
+
+  const status =
+    document.getElementById("status");
+
+  const downloadButton =
+    document.getElementById("downloadButton");
+
+  const resolution =
+    document.getElementById("resolution");
+
+  const fps =
+    document.getElementById("fps");
+
+  const quality =
+    document.getElementById("quality");
+
+
+  // ======================================================
+  // VARIABLES
+  // ======================================================
+
+  const ffmpeg = new FFmpeg();
+
+  let selectedFile = null;
+
+  let previewURL = null;
+
+  let outputURL = null;
+
+  let ffmpegLoaded = false;
+
+
+  // ======================================================
+  // HELPERS
+  // ======================================================
+
+  function formatBytes(bytes) {
+
+    if (bytes === 0) {
+      return "0 Bytes";
+    }
+
+    const units = [
+      "Bytes",
+      "KB",
+      "MB",
+      "GB"
+    ];
+
+    const i =
+      Math.floor(
+        Math.log(bytes) /
+        Math.log(1024)
+      );
+
+    return (
+      (bytes /
+        Math.pow(1024, i)
+      ).toFixed(2)
+      + " "
+      + units[i]
+    );
   }
 
-  const url = URL.createObjectURL(selectedFile);
 
-  preview.src = url;
-  preview.style.display = "block";
+  function setProgress(value) {
 
-  info.style.display = "block";
+    value = Math.max(
+      0,
+      Math.min(100, value)
+    );
 
-  info.innerHTML = `
-    <b>Nama:</b> ${selectedFile.name}<br>
-    <b>Ukuran:</b> ${(selectedFile.size / 1024 / 1024).toFixed(2)} MB<br>
-    <b>Format:</b> ${selectedFile.type || "Unknown"}
-  `;
+    progressBar.style.width =
+      value + "%";
 
-  encodeButton.disabled = false;
-
-  status.textContent = "";
-
-});
-
-encodeButton.addEventListener("click", async function() {
-
-  if (!selectedFile) {
-    return;
+    progressText.textContent =
+      Math.round(value) + "%";
   }
 
-  status.textContent = "Mempersiapkan encoder...";
 
-  document.getElementById("progressContainer")
-    .style.display = "block";
+  function setStatus(message, type = "") {
 
-  /*
-    Encoder FFmpeg akan kita pasang di tahap berikutnya.
-  */
+    status.textContent = message;
 
-  setProgress(20);
+    status.className =
+      "status " + type;
+  }
 
-  setTimeout(() => {
 
-    setProgress(50);
+  // ======================================================
+  // FFMPEG LOG
+  // ======================================================
 
-    status.textContent =
-      "Encoder belum dipasang. Tahap berikutnya kita pasang FFmpeg.";
+  ffmpeg.on(
+    "log",
+    ({ message }) => {
 
-  }, 700);
+      console.log(
+        "[FFmpeg]",
+        message
+      );
 
-});
+    }
+  );
 
-function setProgress(value) {
 
-  document.getElementById("progressBar")
-    .style.width = value + "%";
+  // ======================================================
+  // FFMPEG PROGRESS
+  // ======================================================
 
-}
+  ffmpeg.on(
+    "progress",
+    ({ progress }) => {
+
+      if (!isNaN(progress)) {
+
+        setProgress(
+          progress * 100
+        );
+
+      }
+
+    }
+  );
+
+
+  // ======================================================
+  // SELECT VIDEO
+  // ======================================================
+
+  videoInput.addEventListener(
+    "change",
+    () => {
+
+      const file =
+        videoInput.files[0];
+
+      if (!file) {
+        return;
+      }
+
+      selectedFile = file;
+
+
+      // Preview URL
+
+      if (previewURL) {
+
+        URL.revokeObjectURL(
+          previewURL
+        );
+
+      }
+
+      previewURL =
+        URL.createObjectURL(file);
+
+      preview.src =
+        previewURL;
+
+      preview.style.display =
+        "block";
+
+
+      // File information
+
+      fileInfo.style.display =
+        "block";
+
+      fileInfo.innerHTML = `
+
+        <strong>Nama:</strong>
+        ${file.name}
+
+        <br>
+
+        <strong>Ukuran:</strong>
+        ${formatBytes(file.size)}
+
+        <br>
+
+        <strong>Format:</strong>
+        ${file.type || "Tidak diketahui"}
+
+      `;
+
+
+      // Show settings
+
+      settingsCard.classList.remove(
+        "hidden"
+      );
+
+
+      encodeButton.disabled =
+        !ffmpegLoaded;
+
+
+      downloadButton.style.display =
+        "none";
+
+
+      if (ffmpegLoaded) {
+
+        setStatus(
+          "Video siap di-encode."
+        );
+
+      } else {
+
+        setStatus(
+          "Tekan Load Encoder terlebih dahulu."
+        );
+
+      }
+
+    }
+  );
+
+
+  // ======================================================
+  // LOAD FFMPEG
+  // ======================================================
+
+  loadButton.addEventListener(
+    "click",
+    async () => {
+
+      if (ffmpegLoaded) {
+        return;
+      }
+
+      try {
+
+        loadButton.disabled =
+          true;
+
+        loadButton.textContent =
+          "⏳ Loading Encoder...";
+
+        setStatus(
+          "Mengunduh engine FFmpeg. Pertama kali dapat membutuhkan beberapa saat..."
+        );
+
+
+        const baseURL =
+          "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.10/dist/umd";
+
+
+        await ffmpeg.load({
+
+          coreURL:
+            await toBlobURL(
+              `${baseURL}/ffmpeg-core.js`,
+              "text/javascript"
+            ),
+
+          wasmURL:
+            await toBlobURL(
+              `${baseURL}/ffmpeg-core.wasm`,
+              "application/wasm"
+            )
+
+        });
+
+
+        ffmpegLoaded =
+          true;
+
+
+        loadButton.textContent =
+          "✅ Encoder Siap";
+
+        loadButton.disabled =
+          true;
+
+
+        encodeButton.disabled =
+          !selectedFile;
+
+
+        setStatus(
+          "Encoder siap digunakan.",
+          "success"
+        );
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        loadButton.disabled =
+          false;
+
+        loadButton.textContent =
+          "⚡ Coba Load Lagi";
+
+        setStatus(
+          "Gagal memuat FFmpeg: " +
+          error.message,
+          "error"
+        );
+
+      }
+
+    }
+  );
+
+
+  // ======================================================
+  // ENCODE
+  // ======================================================
+
+  encodeButton.addEventListener(
+    "click",
+    async () => {
+
+      if (!selectedFile) {
+
+        setStatus(
+          "Pilih video terlebih dahulu.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      if (!ffmpegLoaded) {
+
+        setStatus(
+          "Load Encoder terlebih dahulu.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      try {
+
+        encodeButton.disabled =
+          true;
+
+        loadButton.disabled =
+          true;
+
+        downloadButton.style.display =
+          "none";
+
+        progressContainer.style.display =
+          "block";
+
+        setProgress(0);
+
+
+        setStatus(
+          "Mempersiapkan video..."
+        );
+
+
+        // --------------------------------------------------
+        // File names
+        // --------------------------------------------------
+
+        const inputName =
+          "input" +
+          getExtension(
+            selectedFile.name
+          );
+
+        const outputName =
+          "tiktok-output.mp4";
+
+
+        // --------------------------------------------------
+        // Write input file
+        // --------------------------------------------------
+
+        await ffmpeg.writeFile(
+          inputName,
+          await fetchFile(selectedFile)
+        );
+
+
+        setProgress(5);
+
+        setStatus(
+          "Video berhasil dimasukkan ke encoder..."
+        );
+
+
+        // --------------------------------------------------
+        // Build FFmpeg arguments
+        // --------------------------------------------------
+
+        const args = [
+
+          "-i",
+          inputName,
+
+          // Video codec
+          "-c:v",
+          "libx264",
+
+          // Quality
+          "-crf",
+          quality.value,
+
+          // Preset
+          "-preset",
+          "medium",
+
+          // Pixel format
+          "-pix_fmt",
+          "yuv420p",
+
+          // Fast start
+          "-movflags",
+          "+faststart"
+
+        ];
+
+
+        // --------------------------------------------------
+        // FPS
+        // --------------------------------------------------
+
+        if (
+          fps.value !==
+          "original"
+        ) {
+
+          args.push(
+            "-r",
+            fps.value
+          );
+
+        }
+
+
+        // --------------------------------------------------
+        // Resolution
+        // --------------------------------------------------
+
+        if (
+          resolution.value ===
+          "1080"
+        ) {
+
+          args.push(
+            "-vf",
+            "scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2:color=black"
+          );
+
+        }
+
+
+        if (
+          resolution.value ===
+          "720"
+        ) {
+
+          args.push(
+            "-vf",
+            "scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2:color=black"
+          );
+
+        }
+
+
+        // --------------------------------------------------
+        // Audio
+        // --------------------------------------------------
+
+        args.push(
+
+          "-c:a",
+          "aac",
+
+          "-b:a",
+          "192k",
+
+          "-ar",
+          "48000",
+
+          "-ac",
+          "2",
+
+          outputName
+
+        );
+
+
+        console.log(
+          "FFmpeg command:",
+          args
+        );
+
+
+        setStatus(
+          "Sedang melakukan encoding..."
+        );
+
+        setProgress(10);
+
+
+        // --------------------------------------------------
+        // EXECUTE
+        // --------------------------------------------------
+
+        await ffmpeg.exec(
+          args
+        );
+
+
+        setProgress(95);
+
+        setStatus(
+          "Menyiapkan file hasil..."
+        );
+
+
+        // --------------------------------------------------
+        // READ OUTPUT
+        // --------------------------------------------------
+
+        const data =
+          await ffmpeg.readFile(
+            outputName
+          );
+
+
+        // --------------------------------------------------
+        // Create Blob
+        // --------------------------------------------------
+
+        const blob =
+          new Blob(
+            [data.buffer],
+            {
+              type:
+                "video/mp4"
+            }
+          );
+
+
+        // Remove previous URL
+
+        if (outputURL) {
+
+          URL.revokeObjectURL(
+            outputURL
+          );
+
+        }
+
+
+        outputURL =
+          URL.createObjectURL(
+            blob
+          );
+
+
+        // --------------------------------------------------
+        // Download
+        // --------------------------------------------------
+
+        downloadButton.href =
+          outputURL;
+
+        downloadButton.download =
+          createOutputName(
+            selectedFile.name
+          );
+
+        downloadButton.style.display =
+          "block";
+
+
+        setProgress(100);
+
+
+        setStatus(
+          "✅ Encoding selesai! Video siap di-download.",
+          "success"
+        );
+
+
+        // --------------------------------------------------
+        // Cleanup input/output from FFmpeg FS
+        // --------------------------------------------------
+
+        try {
+
+          await ffmpeg.deleteFile(
+            inputName
+          );
+
+          await ffmpeg.deleteFile(
+            outputName
+          );
+
+        } catch (cleanupError) {
+
+          console.log(
+            "Cleanup:",
+            cleanupError
+          );
+
+        }
+
+
+      } catch (error) {
+
+        console.error(error);
+
+        setStatus(
+          "❌ Encoding gagal: " +
+          error.message,
+          "error"
+        );
+
+      } finally {
+
+        encodeButton.disabled =
+          !ffmpegLoaded ||
+          !selectedFile;
+
+        loadButton.disabled =
+          true;
+
+      }
+
+    }
+  );
+
+
+  // ======================================================
+  // EXTENSION
+  // ======================================================
+
+  function getExtension(filename) {
+
+    const dot =
+      filename.lastIndexOf(".");
+
+    if (dot === -1) {
+      return ".mp4";
+    }
+
+    return filename
+      .substring(dot)
+      .toLowerCase();
+
+  }
+
+
+  // ======================================================
+  // OUTPUT NAME
+  // ======================================================
+
+  function createOutputName(
+    filename
+  ) {
+
+    const dot =
+      filename.lastIndexOf(".");
+
+    let name =
+      filename;
+
+    if (dot !== -1) {
+
+      name =
+        filename.substring(
+          0,
+          dot
+        );
+
+    }
+
+    return (
+      name +
+      "_TikTok.mp4"
+    );
+
+  }
 
 </script>
 

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>TikTok Video Encoder</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #080808;
+      color: white;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 30px 18px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: #151515;
+      border: 1px solid #292929;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .upload {
+      border: 2px dashed #555;
+      border-radius: 14px;
+      padding: 35px 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .upload:hover {
+      border-color: white;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 12px;
+      background: white;
+      color: black;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    video {
+      width: 100%;
+      max-height: 500px;
+      border-radius: 12px;
+      margin-top: 20px;
+      background: black;
+    }
+
+    .info {
+      margin-top: 15px;
+      color: #aaa;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .progress {
+      margin-top: 20px;
+      height: 8px;
+      background: #333;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: white;
+      transition: width 0.2s;
+    }
+
+    .status {
+      text-align: center;
+      margin-top: 12px;
+      color: #aaa;
+    }
+
+    .download {
+      display: block;
+      text-align: center;
+      background: #25f4ee;
+      color: black;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>🎬 TikTok Video Encoder</h1>
+
+    <div class="subtitle">
+      Optimalkan video sebelum upload ke TikTok
+    </div>
+
+    <div class="card">
+
+      <label class="upload" for="videoInput">
+        <div style="font-size:40px;">📁</div>
+        <br>
+        Pilih video dari galeri
+        <br>
+        <small style="color:#888;">
+          MP4 / MOV / WebM
+        </small>
+      </label>
+
+      <input
+        type="file"
+        id="videoInput"
+        accept="video/*"
+      >
+
+      <video
+        id="preview"
+        controls
+        style="display:none;"
+      ></video>
+
+      <div
+        id="info"
+        class="info"
+        style="display:none;"
+      ></div>
+
+      <button
+        id="encodeButton"
+        disabled
+      >
+        Encode Video
+      </button>
+
+      <div
+        class="progress"
+        id="progressContainer"
+        style="display:none;"
+      >
+        <div
+          class="progress-bar"
+          id="progressBar"
+        ></div>
+      </div>
+
+      <div
+        class="status"
+        id="status"
+      ></div>
+
+      <div id="downloadContainer"></div>
+
+    </div>
+
+    <div class="card">
+
+      <h3>⚙️ Target Encoding</h3>
+
+      <div class="info">
+        Format: MP4<br>
+        Video Codec: H.264<br>
+        Audio: AAC<br>
+        Target: Vertical 9:16<br>
+        FPS: 30 / 60
+      </div>
+
+    </div>
+
+  </div>
+
+<script>
+
+const videoInput = document.getElementById("videoInput");
+const preview = document.getElementById("preview");
+const info = document.getElementById("info");
+const encodeButton = document.getElementById("encodeButton");
+const status = document.getElementById("status");
+
+let selectedFile = null;
+
+videoInput.addEventListener("change", function() {
+
+  selectedFile = this.files[0];
+
+  if (!selectedFile) {
+    return;
+  }
+
+  const url = URL.createObjectURL(selectedFile);
+
+  preview.src = url;
+  preview.style.display = "block";
+
+  info.style.display = "block";
+
+  info.innerHTML = `
+    <b>Nama:</b> ${selectedFile.name}<br>
+    <b>Ukuran:</b> ${(selectedFile.size / 1024 / 1024).toFixed(2)} MB<br>
+    <b>Format:</b> ${selectedFile.type || "Unknown"}
+  `;
+
+  encodeButton.disabled = false;
+
+  status.textContent = "";
+
+});
+
+encodeButton.addEventListener("click", async function() {
+
+  if (!selectedFile) {
+    return;
+  }
+
+  status.textContent = "Mempersiapkan encoder...";
+
+  document.getElementById("progressContainer")
+    .style.display = "block";
+
+  /*
+    Encoder FFmpeg akan kita pasang di tahap berikutnya.
+  */
+
+  setProgress(20);
+
+  setTimeout(() => {
+
+    setProgress(50);
+
+    status.textContent =
+      "Encoder belum dipasang. Tahap berikutnya kita pasang FFmpeg.";
+
+  }, 700);
+
+});
+
+function setProgress(value) {
+
+  document.getElementById("progressBar")
+    .style.width = value + "%";
+
+}
+
+</script>
+
+</body>
+</html>
